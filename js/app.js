@@ -91,9 +91,32 @@ var particlesConfig = {
     'retina_detect': true
 };
 
+var bestScore;
+var startPanel = document.getElementById('startPanel');
+var startBtn = document.getElementById('startGame');
+
 var init = function() {
     particlesJS('particles-js', particlesConfig);
+    stopwatchShow();
 };
 
+var start = function() {
+    setTimeout(function() {
+        pJSDom[0].pJS.fn.vendors.updateOnHoverMode('grab');
+    }, 500);
+}
+
+var showStartPanel = function() {
+    startPanel.style.display = 'inline-block';
+}
+
+var hideStartPanel = function() {
+    startPanel.style.display = 'none';
+}
+
+startBtn.onclick = function() {
+    start();
+    hideStartPanel();
+}
 
 init();
