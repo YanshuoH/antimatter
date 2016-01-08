@@ -47,7 +47,7 @@ var particlesConfig = {
         },
         line_linked: {
             enable: true,
-            distance: 150,
+            distance: 200,
             color: '#ffffff',
             opacity: 0.8,
             width: 3,
@@ -74,6 +74,10 @@ var particlesConfig = {
                 enable: true,
                 mode: 'repulse'
             },
+            onclick: {
+                enable: true,
+                mode: 'bubble'
+            },
             resize: true
         },
         modes: {
@@ -84,8 +88,15 @@ var particlesConfig = {
                 }
             },
             repulse: {
-                distance: 500
-            }
+                distance: 200
+            },
+            "bubble": {
+                "distance": 200,
+                "size": 40,
+                "duration": 1,
+                "opacity": 8,
+                "speed": 3
+            },
         }
     },
     'retina_detect': true
@@ -96,6 +107,8 @@ var startPanel = document.getElementById('startPanel');
 var startBtn = document.getElementById('startGame');
 var resultLayer = document.getElementById('resultLayer');
 var bestScoreElement = document.getElementById('bestScoreValue');
+var descriptionContainer = document.getElementById('descriptionContainer');
+var failContainer = document.getElementById('failContainer');
 
 var init = function() {
     particlesJS('particles-js', particlesConfig);
@@ -104,6 +117,7 @@ var init = function() {
 
 var start = function() {
     hideResultLayer();
+    hideDescriptionContainer();
     setTimeout(function() {
         pJSDom[0].pJS.fn.vendors.updateOnHoverMode('grab');
     }, 500);
@@ -113,6 +127,7 @@ var stop = function() {
     if (pJSDom) {
         var duration = stopwatchStop();
         handleBestScore(duration);
+        showFailContainer();
         var exportImageurl = pJSDom[0].pJS.fn.vendors.getCanvasDataUrl();
         showResultLayer(exportImageurl);
         pJSDom[0].pJS.fn.vendors.updateOnHoverMode('repulse');
@@ -134,6 +149,15 @@ var showStartPanel = function() {
 
 var hideStartPanel = function() {
     startPanel.style.display = 'none';
+}
+
+var hideDescriptionContainer = function() {
+    descriptionContainer.style.display = 'none';
+}
+
+var showFailContainer = function() {
+    failContainer.style.display = 'block';
+    startGame.innerHTML = 'Run Forest run!';
 }
 
 var handleBestScore = function(currentScore) {
