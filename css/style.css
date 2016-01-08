@@ -69,9 +69,11 @@ html,body{
 }
 
 .panel {
-    display: inline-block;
+    margin: 0 auto;
     font-size:1.3em;
     position: absolute;
+    left: 0;
+    right: 0;
     background:#eee;
     padding:20px;
     border-radius: 4px;
@@ -79,18 +81,40 @@ html,body{
 }
 
 .panel.start {
-    top:50%;
-    margin:-110px 0 0 -100px;
-    width:200px;
-    height:220px;
+    top:25%;
+    width:20%;
 }
 
 .panel.score {
     top:0;
-    margin: 0 0 0px -100px;
     width:220px;
     height:85px;
     padding:10px;
+}
+
+#startGame {
+    width: 50%;
+    margin-top: 3%;
+}
+
+.fail {
+    display: none;
+}
+
+h2#fail {
+    font-size:1.2em;
+    font-weight:700;
+    text-align:center;
+    color:#222;
+}
+
+.like {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.like > iframe {
+    width: 100px;
 }
 
 .best-score {
