@@ -95,6 +95,7 @@ var bestScore;
 var startPanel = document.getElementById('startPanel');
 var startBtn = document.getElementById('startGame');
 var resultLayer = document.getElementById('resultLayer');
+var bestScoreElement = document.getElementById('bestScoreValue');
 
 var init = function() {
     particlesJS('particles-js', particlesConfig);
@@ -110,6 +111,8 @@ var start = function() {
 
 var stop = function() {
     if (pJSDom) {
+        var duration = stopwatchStop();
+        handleBestScore(duration);
         var exportImageurl = pJSDom[0].pJS.fn.vendors.getCanvasDataUrl();
         showResultLayer(exportImageurl);
         pJSDom[0].pJS.fn.vendors.updateOnHoverMode('repulse');
@@ -131,6 +134,20 @@ var showStartPanel = function() {
 
 var hideStartPanel = function() {
     startPanel.style.display = 'none';
+}
+
+var handleBestScore = function(currentScore) {
+    var updateBestScore = false;
+    if (bestScore === undefined || bestScore < currentScore) {
+        bestScore = currentScore;
+        updateBestScore = true;
+    }
+
+    var formattedTime = formatTime(bestScore);
+    bestScoreElement.innerHTML = formattedTime;
+    if (updateBestScore) {
+        $time.innerHTML = formattedTime;
+    }
 }
 
 document.addEventListener('GameOver', function(e) {
