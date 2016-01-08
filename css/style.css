@@ -1,0 +1,298 @@
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* vietnamese */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+1EA0-1EF1, U+20AB;
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(http://fonts.gstatic.com/s/sourcesanspro/v9/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+
+html,body{
+    width:100%;
+    height:100%;
+    background:#111;
+    font-family: 'Source Sans Pro';
+}
+
+.container {
+    width:100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+.panel {
+    display: inline-block;
+    font-size:1.3em;
+    position: absolute;
+    background:#eee;
+    padding:20px;
+    border-radius: 4px;
+    z-index:100;
+}
+
+.panel.start {
+    top:50%;
+    margin:-110px 0 0 -100px;
+    width:200px;
+    height:220px;
+}
+
+.panel.score {
+    top:0;
+    margin: 0 0 0px -100px;
+    width:220px;
+    height:85px;
+    padding:10px;
+}
+
+.best-score {
+    margin-top: 5px;
+    font-weight:400;
+    font-size:.8em;
+}
+
+#bestScoreValue {
+    font-size:1.2em;
+    font-weight:700;
+    text-align:center;
+    color:#222;
+}
+
+.panel.hide {
+    display: none;
+}
+
+h1 {
+    font-size:1.8em;
+    font-weight:700;
+    text-align:center;
+    color:#222;
+    margin-top:-4px;
+}
+
+h2 {
+    font-weight:400;
+    font-size:.8em;
+    margin-bottom:16px;
+    text-align:center;
+    line-height:1.3em;
+}
+
+span#scoreBoard {
+    font-size:1.2em;
+    font-weight:700;
+    text-align:center;
+    color:#222;
+}
+
+.fullscreen {
+    height: 100%;
+    width: 100%;
+}
+
+.fullscreen#resultLayer {
+    z-index: 100;
+    display: none;
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.js-count-particles{
+    font-size: 9px;
+}
+
+#stats,
+.count-particles{
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats{
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles{
+    border-radius: 0 0 3px 3px;
+}
+
+/* ---- bootstrap btn ---- */
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+    color: #333333;
+    text-decoration: none;
+}
+.btn:active,
+.btn.active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+    cursor: not-allowed;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+a.btn.disabled,
+fieldset[disabled] a.btn {
+    pointer-events: none;
+}
+.btn-default {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+.btn-default:focus,
+.btn-default.focus {
+    color: #333333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+.btn-default:hover {
+    color: #fff;
+    background-color: #222;
+    border-color: #222;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    color: #333333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+    color: #333333;
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+    background-image: none;
+}
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+    background-color: #ffffff;
+    border-color: #cccccc;
+}
+.btn-default .badge {
+    color: #ffffff;
+    background-color: #333333;
+}
