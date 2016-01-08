@@ -94,17 +94,35 @@ var particlesConfig = {
 var bestScore;
 var startPanel = document.getElementById('startPanel');
 var startBtn = document.getElementById('startGame');
+var resultLayer = document.getElementById('resultLayer');
 
 var init = function() {
     particlesJS('particles-js', particlesConfig);
-    stopwatchShow();
 };
 
 var start = function() {
+    hideResultLayer();
     setTimeout(function() {
         pJSDom[0].pJS.fn.vendors.updateOnHoverMode('grab');
     }, 500);
 }
+
+var stop = function() {
+    if (pJSDom) {
+        var exportImageurl = pJSDom[0].pJS.fn.vendors.getCanvasDataUrl();
+        showResultLayer(exportImageurl);
+        pJSDom[0].pJS.fn.vendors.updateOnHoverMode('repulse');
+    }
+};
+
+var showResultLayer = function(imgUrl) {
+    resultLayer.style.display = 'block';
+    resultLayer.style.backgroundImage = 'url(' + imgUrl + ')';
+};
+
+var hideResultLayer = function() {
+    resultLayer.style.display = 'none';
+};
 
 var showStartPanel = function() {
     startPanel.style.display = 'inline-block';
@@ -113,6 +131,11 @@ var showStartPanel = function() {
 var hideStartPanel = function() {
     startPanel.style.display = 'none';
 }
+
+document.addEventListener('GameOver', function(e) {
+    stop();
+    showStartPanel();
+});
 
 startBtn.onclick = function() {
     start();
