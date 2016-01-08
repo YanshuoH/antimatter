@@ -9,8 +9,24 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Stats -->
+<div class="count-particles">
+    <span class="js-count-particles">--</span> particles
+</div>
 
 <div class="container center">
+    <!-- Layer -->
+    <div class="fullscreen" id="resultLayer"></div>
+
+    <!-- Score -->
+    <div class="score panel" id="scorePanel">
+        <span id="scoreBoard"></span>
+        <div class="best-score">
+            <div>longest streak:</div>
+            <div id="bestScoreValue">00:00:00:00</div>
+        </div>
+    </div>
+
     <!-- Panel -->
     <div class="start panel" id="startPanel">
         <h1>Watch Out!</h1>
@@ -24,6 +40,7 @@
 </div>
 
 <!-- scripts -->
+<script type="text/javascript" src="js/stopwatch.js"></script>s
 <script type="text/javascript" src="js/particles.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 

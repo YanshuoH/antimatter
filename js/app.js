@@ -98,6 +98,7 @@ var resultLayer = document.getElementById('resultLayer');
 
 var init = function() {
     particlesJS('particles-js', particlesConfig);
+    stopwatchShow();
 };
 
 var start = function() {
@@ -139,6 +140,8 @@ document.addEventListener('GameOver', function(e) {
 
 startBtn.onclick = function() {
     start();
+    stopwatchReset();
+    stopwatchStart();
     hideStartPanel();
 }
 
