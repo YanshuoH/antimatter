@@ -104,18 +104,24 @@ var particlesConfig = {
 
 var bestScore;
 var startPanel = document.getElementById('startPanel');
+var scorePanel = document.getElementById('scorePanel');
 var startBtn = document.getElementById('startGame');
 var resultLayer = document.getElementById('resultLayer');
 var bestScoreElement = document.getElementById('bestScoreValue');
 var descriptionContainer = document.getElementById('descriptionContainer');
 var failContainer = document.getElementById('failContainer');
+var isPaused = false;
+var isInGmae = false;
 
 var init = function() {
     particlesJS('particles-js', particlesConfig);
+    initScore();
     stopwatchShow();
+    setPauseListener();
 };
 
 var start = function() {
+    isInGmae = true;
     hideResultLayer();
     hideDescriptionContainer();
     setTimeout(function() {
@@ -133,6 +139,59 @@ var stop = function() {
         pJSDom[0].pJS.fn.vendors.updateOnHoverMode('repulse');
     }
 };
+
+var setPauseListener = function() {
+    stats.domElement.onmouseenter = function() {
+        if (isInGmae) {
+            console.log('In stats container');
+            isPaused = true;
+            stopwatchStop();
+            if (isPaused) {
+                stats.domElement.onmouseleave = function() {
+                    if (isInGmae) {
+                        console.log('Out stats container');
+                        isPaused = false;
+                        stopwatchStart();
+                    }
+                };
+            }
+        }
+    };
+
+    scorePanel.onmouseenter = function() {
+        if (isInGmae) {
+            console.log('In score panel container');
+            isPaused = true;
+            stopwatchStop();
+            if (isPaused) {
+                scorePanel.onmouseleave = function() {
+                    if (isInGmae) {
+                        console.log('Out score panel container');
+                        isPaused = false;
+                        stopwatchStart();
+                    }
+                }
+            }
+        }
+    }
+
+    document.onmouseleave = function() {
+        if (isInGmae) {
+            console.log('Out document');
+            isPaused = true;
+            stopwatchStop();
+            if (isPaused) {
+                document.onmouseenter = function() {
+                    if (isInGmae) {
+                        console.log('In document');
+                        isPaused = false;
+                        stopwatchStart();
+                    }
+                };
+            }
+        }
+    }
+}
 
 var showResultLayer = function(imgUrl) {
     resultLayer.style.display = 'block';
@@ -174,12 +233,34 @@ var handleBestScore = function(currentScore) {
     }
 }
 
+var initScore = function() {
+    var count_particles, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+        stats.begin();
+        stats.end();
+        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+}
+
 document.addEventListener('GameOver', function(e) {
+    isInGmae = false;
     stop();
     showStartPanel();
 });
 
 startBtn.onclick = function() {
+    console.log('Starting');
     start();
     stopwatchReset();
     stopwatchStart();
