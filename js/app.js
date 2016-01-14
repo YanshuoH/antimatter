@@ -113,10 +113,6 @@ var failContainer = document.getElementById('failContainer');
 var init = function() {
     particlesJS('particles-js', particlesConfig);
     stopwatchShow();
-    var canvas = document.getElementById('particles-js-canvas');
-    canvas.oncontextmenu = function() {
-        return false;
-    }
 };
 
 var start = function() {
