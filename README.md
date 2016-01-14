@@ -1,7 +1,7 @@
 # Antimatter
 Save the world by seperating your cursor (made of antimatter) from the particles (matter). Little game based on particles.js.
 
-## Play
+## Play (Mobile not supported)
 http://yanshuoh.github.io/antimatter/
 
 ## Story
